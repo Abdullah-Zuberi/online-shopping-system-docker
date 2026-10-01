@@ -1,89 +1,87 @@
-![GitHub](https://img.shields.io/github/license/PuneethReddyHC/online-shopping-system-advanced)
-![](https://visitor-badge.glitch.me/badge?page_id=puneethreddyhc.shop)
+# Online Shopping System (Dockerized)
 
-<a href="https://www.buymeacoffee.com/PuneethReddyHC" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="195" height="55"></a>
+A containerized online e-commerce web application with separate user and admin panels. This project demonstrates a LAMP stack (PHP/MySQL) application modernized and simplified using Docker and Docker Compose for seamless deployment and development.
 
-> ## Updated project with extra Features like WISHLIST, List Orders, add Reviews, updated routing, resolved search bug is available for Premium 
+## Overview
 
-[![Youtube Video](https://img.youtube.com/vi/gLwfj67GI8A/0.jpg)](https://youtu.be/gLwfj67GI8A)
+This repository provides a fully functional online shopping system that eliminates the need for manual server configuration tools like XAMPP or WAMP. By leveraging Docker, the application and its database are orchestrated to launch quickly with a single command, automatically provisioning the database schema and sample data.
 
+## Key Features
 
-# online-shopping-with-advanced-admin-page
-Updated version
+- **User Storefront**: Browse products, search, add to cart, and checkout.
+- **Admin Dashboard**: Manage inventory, products, and user accounts.
+- **Dockerized Environment**: Containerized web server (PHP 7.4 + Apache) and database (MySQL 5.7).
+- **Automated Database Seeding**: The database structure and sample data are automatically populated on the first container startup.
+- **Authentication**: Role-based access control separating regular users and administrators.
 
-online shopping system is a [DBMS project] with both admin and user layouts.
+## Tech Stack
 
-# Installation
+- **Containerization**: Docker, Docker Compose
+- **Backend**: PHP 7.4
+- **Web Server**: Apache
+- **Database**: MySQL 5.7
+- **Frontend**: HTML, CSS, JavaScript
 
-1. Install XAMPP or WAMPP.
+## Architecture / Workflow
 
-2. Open XAMPP Control panal and start [apache] and [mysql] .
+```mermaid
+flowchart TD
+    Client(Web Browser) <-->|Port 80| Web[Web Service: PHP/Apache]
+    Web <-->|Internal Network| DB[(Database Service: MySQL)]
+    DB_Init[onlineshop.sql] -->|Volume Mount| DB
+```
 
-3. Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git)  
-    OR follow gitbash commands
-    
-    i>cd C:\\xampp\htdocs\
-    
-    ii>git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
-    
-4. extract files in C:\\xampp\htdocs\.
+## Project Structure
 
-5. open link localhost/phpmyadmin
+```text
+online-shopping-system-docker/
+├── .github/              # GitHub Actions workflows
+├── admin/                # Admin panel source code
+├── css/                  # Stylesheets
+├── database/             # Database initialization script (onlineshop.sql)
+├── js/                   # Frontend JavaScript
+├── product_images/       # Images for product catalog
+├── Dockerfile            # Instructions for building the PHP/Apache image
+├── docker-compose.yml    # Docker services configuration
+├── index.php             # Main entry point for storefront
+└── README.md             # Project documentation
+```
 
-6. click on new at side navbar.
+## Prerequisites
 
-7. give a database name as (onlineshop) hit on create button.
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-8. after creating database name click on import.
+## Installation
 
-9. browse the file in directory[online-shopping-system-with-advanced-admin-page/database/onlineshop.sql].
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Abdullah-Zuberi/online-shopping-system-docker.git
+   cd online-shopping-system-docker
+   ```
 
-10. after importing successfully.
+## Running the Project
 
-11. open any browser and type http://localhost/online-shopping-system-with-advanced-admin-page-master.
+1. **Start the containers using Docker Compose:**
+   ```bash
+   docker-compose up -d --build
+   ```
+   *This command builds the PHP web service, pulls the MySQL image, and automatically seeds the database.*
 
-12. first register and then login
+2. **Access the application:**
+   - Storefront: Open your browser and navigate to `http://localhost`
+   - Admin Panel: Accessible via `http://localhost/admin`
 
-13. admin login details  Email=admin@gmail.com or username = admin and Password=123456789.
+## Default Credentials
 
-## If you like my project 
-Bye me Cup of coffee
+- **Admin Login:**
+  - **Email / Username**: `admin@gmail.com` / `admin`
+  - **Password**: `123456789`
 
-## visit my other repository with different admin pages with below link
-https://github.com/PuneethReddyHC/online-shopping-system-advanced
+## Configuration
 
-https://github.com/PuneethReddyHC/event-management
+The database configuration is managed within the `docker-compose.yml` file. Environment variables passed to the MySQL container define the setup:
+- `MYSQL_DATABASE`: `onlineshop`
+- `MYSQL_ALLOW_EMPTY_PASSWORD`: `yes`
 
-##  If you like my project hit a star button
-
-
-
-# Screenshots
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/adduser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/adminproductadd.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/manageuser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/manageuseradmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productlistadmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productlist.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/cartpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/homepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/loginmodal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/mainpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productzoom.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/registermodal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/searchfilter.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/searchpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/store.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/storepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/storepage1.png)
-
-
-
-
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+*Note: This configuration is intended for development purposes only. Ensure robust credential management in production environments.*
